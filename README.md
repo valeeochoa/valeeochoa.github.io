@@ -1,2 +1,2 @@
 # valeeochoa.github.io
-This is my cv :) 
+Hi! This is my portfolio
