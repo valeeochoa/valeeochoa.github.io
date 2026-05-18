@@ -59,8 +59,6 @@
                             <!-- Decorative Dachshund Background Placeholder -->
                         <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" data-alt="Cute dachshund dog pattern or background" style="background-image: url('https://images.unsplash.com/photo-1612089209590-7d3a0429fcc0?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center;">
                             </div>
-                        <div class="absolute bottom-10 right-10 w-48 h-48 opacity-80 shadow-md" data-alt="Cute dachshund dog" style="background-image: url('https://images.unsplash.com/photo-1597633244018-7a544186eb29?auto=format&fit=crop&q=80&w=500'); background-size: cover; background-position: center; border-radius: 50%; border: 4px solid rgba(244, 114, 182, 0.4);">
-                            </div>
                             <div class="relative z-10 flex flex-col items-center gap-6 max-w-2xl">
                             <span data-i18n="heroAvailable" class="px-4 py-1 rounded-full bg-pink-200/50 text-pink-600 text-xs font-bold uppercase tracking-widest border border-pink-300/50">Disponible para proyectos</span>
                             
@@ -194,7 +192,7 @@
                                 <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
                                         <span class="material-symbols-outlined text-3xl">palette</span>
                                     </div>
-                                    <span class="font-bold">UI/UX Design</span>
+                                    <span data-i18n="skillUiUx" class="font-bold">Diseño UI/UX</span>
                                 </div>
                             <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
                                 <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
@@ -213,7 +211,7 @@
                             <div class="space-y-8">
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span>Frontend Architecture</span>
+                                        <span data-i18n="skillFrontend">Arquitectura Frontend</span>
                                     <span class="text-pink-500">95%</span>
                                     </div>
                                 <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
@@ -222,7 +220,7 @@
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span>Backend Systems</span>
+                                        <span data-i18n="skillBackend">Sistemas Backend</span>
                                     <span class="text-pink-500">80%</span>
                                     </div>
                                 <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
@@ -231,7 +229,7 @@
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span>Modern UI Patterns</span>
+                                        <span data-i18n="skillUiPatterns">Patrones UI Modernos</span>
                                     <span class="text-pink-500">90%</span>
                                     </div>
                                 <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
@@ -240,7 +238,7 @@
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span>Mobile Optimization</span>
+                                        <span data-i18n="skillMobile">Optimización Móvil</span>
                                     <span class="text-pink-500">85%</span>
                                     </div>
                                 <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
@@ -256,19 +254,19 @@
                     <div class="max-w-[1200px] mx-auto text-center">
                         <div class="mb-10">
                         <span class="material-symbols-outlined text-5xl text-pink-500 mb-4">favorite</span>
-                        <h2 class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
-                        <p class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.</p>
+                        <h2 data-i18n="ctaTitle" class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
+                        <p data-i18n="ctaDesc" class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.</p>
                         </div>
                         <div class="flex flex-wrap justify-center gap-6">
-                        <button onclick="openCvModal('es')" class="flex items-center gap-3 px-10 py-5 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-2xl font-bold text-lg transition-all shadow-sm shadow-pink-200">
+                        <button onclick="openCvModal('es')" data-i18n="ctaBtnCvEs" class="flex items-center gap-3 px-10 py-5 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-2xl font-bold text-lg transition-all shadow-sm shadow-pink-200">
                                 <span class="material-symbols-outlined">visibility</span>
                                 Ver CV (Español)
                             </button>
-                        <button onclick="openCvModal('en')" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                        <button onclick="openCvModal('en')" data-i18n="ctaBtnCvEn" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
                                 <span class="material-symbols-outlined">language</span>
                                 Resume (English)
                             </button>
-                        <a href="mailto:vochoaolguin@gmail.com" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                        <a href="mailto:vochoaolguin@gmail.com" data-i18n="ctaBtnMsg" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
                                 <span class="material-symbols-outlined">mail</span>
                                 Enviar un mensaje
                             </a>
@@ -379,6 +377,11 @@
                 project3Desc: "Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.",
                 skillsTitle: "Habilidades Técnicas",
                 skillsDesc: "Herramientas y tecnologías que utilizo para dar vida a grandes ideas.",
+                skillUiUx: "Diseño UI/UX",
+                skillFrontend: "Arquitectura Frontend",
+                skillBackend: "Sistemas Backend",
+                skillUiPatterns: "Patrones UI Modernos",
+                skillMobile: "Optimización Móvil",
                 ctaTitle: "¿Queres trabajar conmigo?",
                 ctaDesc: "Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.",
                 ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> Ver CV (Español)`,
@@ -404,6 +407,11 @@
                 project3Desc: "Interactive experience rendered in the browser exploring the Taj Mahal.",
                 skillsTitle: "Technical Skills",
                 skillsDesc: "Tools and technologies I use to bring great ideas to life.",
+                skillUiUx: "UI/UX Design",
+                skillFrontend: "Frontend Architecture",
+                skillBackend: "Backend Systems",
+                skillUiPatterns: "Modern UI Patterns",
+                skillMobile: "Mobile Optimization",
                 ctaTitle: "Do you want to work with me?",
                 ctaDesc: "I'm ready to help you build something amazing. Download my detailed resume or send me a message.",
                 ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> View CV (Spanish)`,
