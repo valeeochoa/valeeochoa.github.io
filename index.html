@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Dev Portfolio | Tech</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="tailwind.config.js"></script>
+    <style>
+        @keyframes walkDog {
+            0% { left: -150px; transform: scaleX(-1); }
+            49.9% { left: 100%; transform: scaleX(-1); }
+            50% { left: 100%; transform: scaleX(1); }
+            100% { left: -150px; transform: scaleX(1); }
+        }
+        .walking-dog {
+            position: fixed;
+            bottom: 80px;
+            animation: walkDog 25s linear infinite;
+            z-index: 40;
+            cursor: pointer; /* Permite hacer click en el perro */
+        }
+    </style>
+</head>
+
+<body class="bg-rose-50 font-display text-slate-800 transition-colors duration-300">
+    <div class="relative z-10 flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Navigation Bar -->
+            <header class="fixed top-0 left-0 right-0 z-50 w-full border-b border-pink-200/50 bg-rose-50/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-4 transition-all">
+                <div class="flex items-center justify-between max-w-[1200px] mx-auto">
+                    <div class="flex items-center gap-3">
+                        <div class="size-8 bg-pink-300 rounded-lg flex items-center justify-center text-slate-800">
+                            <span class="material-symbols-outlined">terminal</span>
+                        </div>
+                        <h2 class="text-xl font-bold tracking-tight">Ochoa Valentina</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a data-i18n="navProjects" class="hover:text-pink-500 transition-colors text-sm font-medium" href="#proyectos">Proyectos</a>
+                        <a data-i18n="navSkills" class="hover:text-pink-500 transition-colors text-sm font-medium" href="#habilidades">Habilidades</a>
+                        <a data-i18n="navAbout" class="hover:text-pink-500 transition-colors text-sm font-medium" href="#sobre-mi">Sobre mí</a>
+                        <button onclick="toggleLanguage()" class="flex items-center gap-2 px-4 py-2 bg-pink-300/20 border border-pink-300/50 rounded-full hover:bg-pink-300/40 transition-all text-sm font-bold text-pink-600 cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">language</span>
+                            <span>ES / EN</span>
+                        </button>
+                    </nav>
+                    <div class="flex md:hidden">
+                        <span class="material-symbols-outlined">menu</span>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 pt-20">
+                <!-- Hero Section -->
+                <section class="px-6 md:px-20 lg:px-40 py-6">
+                    <div class="max-w-[1200px] mx-auto">
+                    <div class="relative overflow-hidden rounded-3xl min-h-[500px] flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-pink-200/50 via-white/50 to-pink-300/30 border border-pink-200/50 shadow-sm shadow-pink-100">
+                            <!-- Decorative Dachshund Background Placeholder -->
+                        <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" data-alt="Cute dachshund dog pattern or background" style="background-image: url('https://images.unsplash.com/photo-1612089209590-7d3a0429fcc0?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center;">
+                            </div>
+                        <div class="absolute bottom-10 right-10 w-48 h-48 opacity-80 shadow-md" data-alt="Cute dachshund dog" style="background-image: url('https://images.unsplash.com/photo-1597633244018-7a544186eb29?auto=format&fit=crop&q=80&w=500'); background-size: cover; background-position: center; border-radius: 50%; border: 4px solid rgba(244, 114, 182, 0.4);">
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center gap-6 max-w-2xl">
+                            <span data-i18n="heroAvailable" class="px-4 py-1 rounded-full bg-pink-200/50 text-pink-600 text-xs font-bold uppercase tracking-widest border border-pink-300/50">Disponible para proyectos</span>
+                            
+                            <!-- Foto de Perfil -->
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg bg-pink-100">
+                                <img src="public/valentina.jpg" alt="Valentina Ochoa" class="w-full h-full object-cover" />
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2">
+                                <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-black text-slate-800 leading-[1.1] tracking-tight">
+                                    Hola, soy Valentina
+                                </h1>
+                                <h2 data-i18n="heroSubtitle" class="text-lg md:text-xl font-bold text-pink-500 tracking-wide uppercase text-center">
+                                    Estudiante de Ingeniería en Computación
+                                </h2>
+                            </div>
+                            <p data-i18n="heroDesc" class="text-lg md:text-xl text-slate-600 font-normal leading-relaxed text-center">
+                                Creando experiencias digitales con un toque <span class="text-pink-500 font-semibold italic">único</span> y profesional. Especializada en interfaces limpias y código robusto.
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-4 mt-4">
+                                <a data-i18n="heroBtnProjects" class="flex h-12 items-center px-8 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-xl font-bold transition-all shadow-sm shadow-pink-200" href="#proyectos">
+                                        Ver proyectos
+                                    </a>
+                                <button onclick="openCvModal('es')" data-i18n="heroBtnCvEs" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
+                                        <span class="material-symbols-outlined mr-2">visibility</span>
+                                        Ver CV (ES)
+                                    </button>
+                                <button onclick="openCvModal('en')" data-i18n="heroBtnCvEn" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
+                                        <span class="material-symbols-outlined mr-2">language</span>
+                                        Resume (EN)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Projects Section -->
+            <section class="px-6 md:px-20 lg:px-40 py-10 bg-rose-100/30" id="proyectos">
+                    <div class="max-w-[1200px] mx-auto">
+                        <div class="flex items-end justify-between mb-12">
+                            <div>
+                            <h2 data-i18n="projectsTitle" class="text-3xl font-bold text-slate-800 mb-2">Proyectos Destacados</h2>
+                            <div class="h-1.5 w-20 bg-pink-300 rounded-full"></div>
+                            </div>
+                        
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <!-- Project 1: SCI -->
+                        <a href="https://sci.com.ar" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                                    <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Página web corporativa" src="public/Foto-SCI.png"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                        <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex gap-2 mb-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">React</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Corporate</span>
+                                    </div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Página web SCI</h3>
+                                <p data-i18n="project1Desc" class="text-sm text-slate-600">Desarrollo de landing page y sistema web corporativo para SCI.</p>
+                                </div>
+                        </a>
+                            <!-- Project 2: Agendatina -->
+                        <a href="https://agendatina.site" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                                    <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Dashboard de Agendatina" src="public/agendatina.png"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                        <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex gap-2 mb-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">PHP / MySQL</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">SaaS</span>
+                                    </div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Agendatina</h3>
+                                <p data-i18n="project2Desc" class="text-sm text-slate-600">Plataforma completa de gestión de turnos, agenda virtual y notificaciones.</p>
+                                </div>
+                        </a>
+                            <!-- Project 3: Taj Mahal -->
+                        <a href="https://valeeochoa.github.io/Taj-Mahal/" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                                    <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Taj Mahal render 3D" src="public/taj-mahal.png"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                        <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex gap-2 mb-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Three.js</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">WebGL</span>
+                                    </div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Taj Mahal 3D</h3>
+                                <p data-i18n="project3Desc" class="text-sm text-slate-600">Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.</p>
+                                </div>
+                        </a>
+                        </div>
+                    </div>
+                </section>
+                <!-- Skills Section -->
+                <section class="px-6 md:px-20 lg:px-40 py-10" id="habilidades">
+                    <div class="max-w-[1200px] mx-auto">
+                        <div class="text-center mb-16">
+                        <h2 data-i18n="skillsTitle" class="text-4xl font-bold text-slate-800 mb-4">Habilidades Técnicas</h2>
+                        <p data-i18n="skillsDesc" class="text-slate-600 max-w-xl mx-auto">Herramientas y tecnologías que utilizo para dar vida a grandes ideas.</p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                            <!-- Tech Stack -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">html</span>
+                                    </div>
+                                    <span class="font-bold">HTML5 / CSS3</span>
+                                </div>
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">javascript</span>
+                                    </div>
+                                    <span class="font-bold">JavaScript</span>
+                                </div>
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">database</span>
+                                    </div>
+                                    <span class="font-bold">SQL / NoSQL</span>
+                                </div>
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">palette</span>
+                                    </div>
+                                    <span class="font-bold">UI/UX Design</span>
+                                </div>
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">deployed_code</span>
+                                    </div>
+                                    <span class="font-bold">Next.js</span>
+                                </div>
+                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
+                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                        <span class="material-symbols-outlined text-3xl">brush</span>
+                                    </div>
+                                    <span class="font-bold">Tailwind</span>
+                                </div>
+                            </div>
+                            <!-- Progress Bars -->
+                            <div class="space-y-8">
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm font-bold">
+                                        <span>Frontend Architecture</span>
+                                    <span class="text-pink-500">95%</span>
+                                    </div>
+                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                    <div class="bg-pink-400 h-full rounded-full w-[95%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm font-bold">
+                                        <span>Backend Systems</span>
+                                    <span class="text-pink-500">80%</span>
+                                    </div>
+                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                    <div class="bg-pink-400 h-full rounded-full w-[80%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm font-bold">
+                                        <span>Modern UI Patterns</span>
+                                    <span class="text-pink-500">90%</span>
+                                    </div>
+                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                    <div class="bg-pink-400 h-full rounded-full w-[90%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm font-bold">
+                                        <span>Mobile Optimization</span>
+                                    <span class="text-pink-500">85%</span>
+                                    </div>
+                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                    <div class="bg-pink-400 h-full rounded-full w-[85%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- CTA Section -->
+            <section class="px-6 md:px-20 lg:px-40 py-10 bg-pink-100/50 border-y border-pink-200/50">
+                    <div class="max-w-[1200px] mx-auto text-center">
+                        <div class="mb-10">
+                        <span class="material-symbols-outlined text-5xl text-pink-500 mb-4">favorite</span>
+                        <h2 class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
+                        <p class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.</p>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-6">
+                        <button onclick="openCvModal('es')" class="flex items-center gap-3 px-10 py-5 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-2xl font-bold text-lg transition-all shadow-sm shadow-pink-200">
+                                <span class="material-symbols-outlined">visibility</span>
+                                Ver CV (Español)
+                            </button>
+                        <button onclick="openCvModal('en')" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                                <span class="material-symbols-outlined">language</span>
+                                Resume (English)
+                            </button>
+                        <a href="mailto:vochoaolguin@gmail.com" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                                <span class="material-symbols-outlined">mail</span>
+                                Enviar un mensaje
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!-- Footer -->
+        <footer class="px-6 md:px-20 lg:px-40 py-10 border-t border-pink-200/50 bg-rose-50">
+                <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-3">
+                    <div class="size-6 bg-pink-300/50 rounded-md flex items-center justify-center text-pink-600">
+                            <span class="material-symbols-outlined text-xs">favorite</span>
+                        </div>
+                    <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Dev Portfolio. Hecho con amor perruno.</p>
+                    </div>
+                    <div class="flex items-center gap-6">
+                    <a class="text-slate-500 hover:text-pink-500 transition-colors" href="#">LinkedIn</a>
+                    <a class="text-slate-500 hover:text-pink-500 transition-colors" href="#">GitHub</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal para previsualización del CV -->
+    <div id="cvModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div id="cvModalContent" class="bg-white rounded-3xl w-[95%] md:w-[80%] max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-rose-50/50">
+                <h3 id="cvModalTitle" class="text-xl font-bold text-slate-800">Mi Currículum</h3>
+                <div class="flex items-center gap-4">
+                    <a id="cvDownloadBtn" href="public/CV.pdf" download class="flex items-center gap-2 px-4 py-2 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-xl font-bold transition-all text-sm">
+                        <span class="material-symbols-outlined text-[20px]">download</span>
+                        Descargar
+                    </a>
+                    <button onclick="closeCvModal()" class="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50" title="Cerrar">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 w-full h-full bg-slate-100 relative">
+                <iframe id="cvIframe" src="" class="w-full h-full relative z-10 border-0" title="CV Preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- GIF del perro salchicha animado -->
+    <img src="public/renata.gif" alt="Perro Salchicha Caminando" class="walking-dog w-32 opacity-80" />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const originalDog = document.querySelector('.walking-dog');
+            let dogCount = 1;
+            const maxDogs = 10;
+            
+            document.body.addEventListener('click', (e) => {
+                if (e.target.classList.contains('walking-dog')) {
+                    if (dogCount >= maxDogs) {
+                        // Eliminar todos los clones y reiniciar la cuenta al llegar al límite
+                        const clones = document.querySelectorAll('.dog-clone');
+                        clones.forEach(clone => clone.remove());
+                        dogCount = 1;
+                    } else {
+                        // Clonar el perro original
+                        const newDog = originalDog.cloneNode(true);
+                        newDog.classList.add('dog-clone');
+                        newDog.classList.remove('w-32'); // Removemos el ancho fijo
+                        
+                        // Tamaño aleatorio (entre 50px y 180px)
+                        const randomWidth = Math.floor(Math.random() * (180 - 50 + 1)) + 50;
+                        newDog.style.width = randomWidth + 'px';
+                        
+                        // Posición vertical aleatoria (entre 2% y 85% del alto de la pantalla)
+                        const randomBottom = Math.floor(Math.random() * 83) + 2;
+                        newDog.style.bottom = randomBottom + '%';
+                        
+                        // Duración de la animación aleatoria (caminan a distintas velocidades)
+                        const randomDuration = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
+                        newDog.style.animationDuration = randomDuration + 's';
+                        
+                        // Desfase aleatorio para que empiecen a caminar desde distintas ubicaciones
+                        const randomDelay = Math.floor(Math.random() * 30) * -1;
+                        newDog.style.animationDelay = randomDelay + 's';
+                        
+                        document.body.appendChild(newDog);
+                        dogCount++;
+                    }
+                }
+            });
+        });
+
+        const translations = {
+            es: {
+                navProjects: "Proyectos",
+                navSkills: "Habilidades",
+                navAbout: "Sobre mí",
+                heroAvailable: "Disponible para proyectos",
+                heroTitle: "Hola, soy Valentina",
+                heroSubtitle: "Estudiante de Ingeniería en Computación",
+                heroDesc: "Creando experiencias digitales con un toque <span class='text-pink-500 font-semibold italic'>único</span> y profesional. Especializada en interfaces limpias y código robusto.",
+                heroBtnProjects: "Ver proyectos",
+                heroBtnCvEs: `<span class="material-symbols-outlined mr-2">visibility</span> Ver CV (ES)`,
+                heroBtnCvEn: `<span class="material-symbols-outlined mr-2">language</span> Resume (EN)`,
+                projectsTitle: "Proyectos Destacados",
+                projectsViewPage: "Ver Pagina",
+                project1Desc: "Desarrollo de landing page y sistema web corporativo para SCI.",
+                project2Desc: "Plataforma completa de gestión de turnos, agenda virtual y notificaciones.",
+                project3Desc: "Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.",
+                skillsTitle: "Habilidades Técnicas",
+                skillsDesc: "Herramientas y tecnologías que utilizo para dar vida a grandes ideas.",
+                ctaTitle: "¿Queres trabajar conmigo?",
+                ctaDesc: "Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.",
+                ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> Ver CV (Español)`,
+                ctaBtnCvEn: `<span class="material-symbols-outlined">language</span> Resume (English)`,
+                ctaBtnMsg: `<span class="material-symbols-outlined">mail</span> Enviar un mensaje`,
+                footerText: "© 2026 Dev Portfolio. Hecho con amor perruno."
+            },
+            en: {
+                navProjects: "Projects",
+                navSkills: "Skills",
+                navAbout: "About me",
+                heroAvailable: "Available for projects",
+                heroTitle: "Hi, I'm Valentina",
+                heroSubtitle: "Computer Engineering Student",
+                heroDesc: "Creating digital experiences with a <span class='text-pink-500 font-semibold italic'>unique</span> and professional touch. Specialized in clean interfaces and robust code.",
+                heroBtnProjects: "View projects",
+                heroBtnCvEs: `<span class="material-symbols-outlined mr-2">visibility</span> View CV (ES)`,
+                heroBtnCvEn: `<span class="material-symbols-outlined mr-2">language</span> Resume (EN)`,
+                projectsTitle: "Featured Projects",
+                projectsViewPage: "View Page",
+                project1Desc: "Development of landing page and corporate web system for SCI.",
+                project2Desc: "Complete appointment management platform, virtual agenda, and notifications.",
+                project3Desc: "Interactive experience rendered in the browser exploring the Taj Mahal.",
+                skillsTitle: "Technical Skills",
+                skillsDesc: "Tools and technologies I use to bring great ideas to life.",
+                ctaTitle: "Do you want to work with me?",
+                ctaDesc: "I'm ready to help you build something amazing. Download my detailed resume or send me a message.",
+                ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> View CV (Spanish)`,
+                ctaBtnCvEn: `<span class="material-symbols-outlined">language</span> Resume (English)`,
+                ctaBtnMsg: `<span class="material-symbols-outlined">mail</span> Send a message`,
+                footerText: "© 2026 Dev Portfolio. Made with puppy love."
+            }
+        };
+
+        let currentLang = 'es';
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.documentElement.lang = currentLang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+
+        function openCvModal(lang) {
+            const modal = document.getElementById('cvModal');
+            const content = document.getElementById('cvModalContent');
+            const iframe = document.getElementById('cvIframe');
+            const downloadBtn = document.getElementById('cvDownloadBtn');
+            const title = document.getElementById('cvModalTitle');
+
+            if (lang === 'en') {
+                iframe.src = 'public/resume.pdf';
+                downloadBtn.href = 'public/resume.pdf';
+                downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span> Download';
+                title.textContent = 'My Resume';
+            } else {
+                iframe.src = 'public/CV.pdf';
+                downloadBtn.href = 'public/CV.pdf';
+                downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span> Descargar';
+                title.textContent = 'Mi Currículum';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCvModal() {
+            const modal = document.getElementById('cvModal');
+            const content = document.getElementById('cvModalContent');
+            
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.getElementById('cvIframe').src = '';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
