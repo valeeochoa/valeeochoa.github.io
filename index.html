@@ -307,8 +307,13 @@
                     </button>
                 </div>
             </div>
-            <div class="flex-1 w-full h-full bg-slate-100 relative">
-                <iframe id="cvIframe" src="" class="w-full h-full relative z-10 border-0" title="CV Preview"></iframe>
+            <div class="flex-1 w-full h-full bg-slate-100 relative flex items-center justify-center">
+                <!-- Animación de carga -->
+                <div id="cvLoader" class="absolute z-0 flex flex-col items-center gap-3">
+                    <div class="w-10 h-10 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
+                    <span id="cvLoaderText" class="text-sm font-bold text-slate-500">Cargando...</span>
+                </div>
+                <iframe id="cvIframe" src="" class="w-full h-full relative z-10 border-0 transition-opacity duration-300 opacity-0" title="CV Preview"></iframe>
             </div>
         </div>
     </div>
@@ -439,17 +444,31 @@
             const iframe = document.getElementById('cvIframe');
             const downloadBtn = document.getElementById('cvDownloadBtn');
             const title = document.getElementById('cvModalTitle');
+            const loader = document.getElementById('cvLoader');
+            const loaderText = document.getElementById('cvLoaderText');
+
+            // Mostrar el loader y ocultar el iframe temporalmente
+            loader.classList.remove('hidden');
+            iframe.classList.add('opacity-0');
+
+            // Evento para detectar cuando el iframe termina de cargar
+            iframe.onload = function() {
+                loader.classList.add('hidden');
+                iframe.classList.remove('opacity-0');
+            };
 
             if (lang === 'en') {
-                iframe.src = 'public/resume.pdf';
-                downloadBtn.href = 'public/resume.pdf';
+                iframe.src = 'public/CV.pdf';
+                downloadBtn.href = 'public/CV.pdf';
                 downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span> Download';
                 title.textContent = 'My Resume';
+                loaderText.textContent = 'Loading...';
             } else {
                 iframe.src = 'public/CV.pdf';
                 downloadBtn.href = 'public/CV.pdf';
                 downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span> Descargar';
                 title.textContent = 'Mi Currículum';
+                loaderText.textContent = 'Cargando...';
             }
 
             modal.classList.remove('hidden');
