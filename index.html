@@ -376,7 +376,7 @@
                                         <div class="relative">
                                             <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
                                             <span data-i18n="teach1Date" class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2023 – Presente</span>
-                                            <h4 data-i18n="teach1Role" class="text-lg font-bold text-slate-800 mt-2">Auxiliar de Segunda Categoría </h4>
+                                            <h4 data-i18n="teach1Role" class="text-lg font-bold text-slate-800 mt-2">Auxiliar de Segunda Categoría</h4>
                                             <p data-i18n="teach1Place" class="text-sm font-medium text-slate-600">Departamento de Informática – UNSL</p>
                                             <p data-i18n="teach1Details" class="text-xs text-slate-500 mt-1">Área de Servicios (2026–Presente) y Área de Formación Inicial (2023–2026)</p>
                                         </div>
@@ -440,14 +440,20 @@
 
                         <!-- Contact Form Card -->
                         <div class="bg-white/90 backdrop-blur-sm p-6 md:p-10 rounded-3xl border border-pink-200 shadow-lg shadow-pink-100/60">
-                            <form id="contactForm" onsubmit="submitContactForm(event)" class="space-y-5">
+                            <form id="contactForm" action="https://formsubmit.co/vochoaolguin@gmail.com" method="POST" onsubmit="handleFormSubmit()" class="space-y-5">
+                                <!-- Configuración FormSubmit -->
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_template" value="table">
+                                <input type="hidden" name="_next" value="https://valeeochoa.github.io?sent=true#contacto">
+                                <input type="hidden" id="formEmailSubject" name="_subject" value="Nuevo contacto desde tu Portfolio">
+
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
                                         <label for="contactName" data-i18n="formNameLabel" class="block text-sm font-bold text-slate-700 mb-2">Tu nombre *</label>
                                         <input
                                             type="text"
                                             id="contactName"
-                                            name="name"
+                                            name="Nombre"
                                             required
                                             data-i18n-placeholder="formNamePlaceholder"
                                             placeholder="Ej. Juan Pérez"
@@ -459,7 +465,7 @@
                                         <input
                                             type="email"
                                             id="contactEmail"
-                                            name="email"
+                                            name="Email"
                                             required
                                             data-i18n-placeholder="formEmailPlaceholder"
                                             placeholder="ejemplo@correo.com"
@@ -472,7 +478,7 @@
                                     <input
                                         type="text"
                                         id="contactSubject"
-                                        name="subject"
+                                        name="Motivo"
                                         data-i18n-placeholder="formSubjectPlaceholder"
                                         placeholder="Propuesta laboral, proyecto freelance, consulta..."
                                         class="w-full rounded-xl border-pink-200 bg-rose-50/40 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-pink-400 focus:ring-pink-300 transition-all"
@@ -482,7 +488,7 @@
                                     <label for="contactMessage" data-i18n="formMessageLabel" class="block text-sm font-bold text-slate-700 mb-2">Mensaje *</label>
                                     <textarea
                                         id="contactMessage"
-                                        name="message"
+                                        name="Mensaje"
                                         rows="4"
                                         required
                                         data-i18n-placeholder="formMessagePlaceholder"
@@ -514,7 +520,7 @@
                         <div class="size-6 bg-pink-300/50 rounded-md flex items-center justify-center text-pink-600">
                             <span class="material-symbols-outlined text-xs">favorite</span>
                         </div>
-                        <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Valentina Ochoa Olguin. Hecho con amor <3</p>
+                        <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Valentina Ochoa Olguin. Hecho con amor &lt;3</p>
                     </div>
                     <div class="flex items-center gap-6 text-sm font-medium">
                         <a class="text-slate-500 hover:text-pink-500 transition-colors" href="https://www.linkedin.com/search/results/all/?keywords=Valentina%20Ochoa%20Olguin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -595,6 +601,16 @@
                     }
                 }
             });
+
+            // Si vuelve de un envío exitoso
+            if (window.location.search.includes('sent=true')) {
+                const feedback = document.getElementById('formFeedback');
+                if (feedback) {
+                    feedback.textContent = translations[currentLang].formSuccessMsg;
+                    feedback.className = 'rounded-xl p-4 text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+                    feedback.classList.remove('hidden');
+                }
+            }
         });
 
         function toggleMobileMenu() {
@@ -653,7 +669,7 @@
                 edu2Details: "Becaria del programa internacional ARFITEC",
                 aboutTeachTitle: "Experiencia Docente",
                 teach1Date: "2023 – Presente",
-                teach1Role: "Auxiliar de Segunda Categoría (3 cargos)",
+                teach1Role: "Auxiliar de Segunda Categoría",
                 teach1Place: "Departamento de Informática – UNSL",
                 teach1Details: "Área de Servicios (2026–Presente) y Área de Formación Inicial (2023–2026)",
                 teach2Date: "2022 – Presente",
@@ -680,7 +696,7 @@
                 formSendingBtn: `<span class="material-symbols-outlined animate-spin">progress_activity</span> Enviando...`,
                 formSuccessMsg: "¡Gracias por escribirme! Tu mensaje fue enviado correctamente y me pondré en contacto con vos a la brevedad.",
                 formErrorMsg: "Hubo un problema al enviar el formulario. Por favor intentá nuevamente o escribime a vochoaolguin@gmail.com.",
-                footerText: "© 2026 Valentina Ochoa Olguin. Hecho con amor perruno."
+                footerText: "© 2026 Valentina Ochoa Olguin. Hecho con amor &lt;3"
             },
             en: {
                 navProjects: "Projects",
@@ -772,57 +788,18 @@
             });
         }
 
-        async function submitContactForm(event) {
-            event.preventDefault();
-            const form = document.getElementById('contactForm');
+        function handleFormSubmit() {
             const submitBtn = document.getElementById('contactSubmitBtn');
-            const feedback = document.getElementById('formFeedback');
-
             const name = document.getElementById('contactName').value.trim();
-            const email = document.getElementById('contactEmail').value.trim();
             const customSubject = document.getElementById('contactSubject').value.trim();
-            const message = document.getElementById('contactMessage').value.trim();
-
+            const subjectInput = document.getElementById('formEmailSubject');
+            if (subjectInput) {
+                subjectInput.value = customSubject
+                    ? `${name} se desea contactar con vos (${customSubject})`
+                    : `${name} se desea contactar con vos desde tu Portfolio`;
+            }
             submitBtn.disabled = true;
             submitBtn.innerHTML = translations[currentLang].formSendingBtn;
-            feedback.classList.add('hidden');
-
-            const emailSubject = customSubject
-                ? `${name} se desea contactar con vos (${customSubject})`
-                : `${name} se desea contactar con vos desde tu Portfolio`;
-
-            try {
-                const response = await fetch('https://formsubmit.co/ajax/vochoaolguin@gmail.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _subject: emailSubject,
-                        Nombre: name,
-                        Email: email,
-                        Motivo: customSubject || 'Contacto desde Portfolio',
-                        Mensaje: message,
-                        _template: 'table'
-                    })
-                });
-
-                const result = await response.json();
-                if (response.ok && result.success !== 'false') {
-                    feedback.textContent = translations[currentLang].formSuccessMsg;
-                    feedback.className = 'rounded-xl p-4 text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
-                    form.reset();
-                } else {
-                    throw new Error('FormSubmit error');
-                }
-            } catch (error) {
-                feedback.textContent = translations[currentLang].formErrorMsg;
-                feedback.className = 'rounded-xl p-4 text-sm font-semibold bg-red-50 text-red-700 border border-red-200';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = translations[currentLang].formSubmitBtn;
-            }
         }
 
         function openCvModal(lang) {
