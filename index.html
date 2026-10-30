@@ -423,7 +423,7 @@
                 <section class="px-6 md:px-20 lg:px-40 py-14 bg-pink-100/50 border-y border-pink-200/50" id="contacto">
                     <div class="max-w-[900px] mx-auto">
                         <div class="text-center mb-10">
-                            <span class="material-symbols-outlined text-5xl text-pink-500 mb-4">favorite</span>
+                            <span onclick="revealVisitorCount(this)" class="material-symbols-outlined text-5xl text-pink-500 mb-4 cursor-pointer hover:scale-110 active:scale-95 transition-transform select-none" title="❤️">favorite</span>
                             <h2 data-i18n="ctaTitle" class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
                             <p data-i18n="ctaDesc" class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o completá el formulario para contactarme.</p>
                             <div class="flex flex-wrap justify-center gap-4 mt-6">
@@ -517,9 +517,9 @@
             <footer class="px-6 md:px-20 lg:px-40 py-10 border-t border-pink-200/50 bg-rose-50">
                 <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="flex items-center gap-3">
-                        <div class="size-6 bg-pink-300/50 rounded-md flex items-center justify-center text-pink-600">
+                        <button onclick="revealVisitorCount(this)" class="size-6 bg-pink-300/50 hover:bg-pink-300 rounded-md flex items-center justify-center text-pink-600 hover:scale-110 active:scale-95 transition-all cursor-pointer" title="Visitas">
                             <span class="material-symbols-outlined text-xs">favorite</span>
-                        </div>
+                        </button>
                         <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Valentina Ochoa Olguin. Hecho con amor &lt;3</p>
                     </div>
                     <div class="flex items-center gap-6 text-sm font-medium">
@@ -866,6 +866,65 @@
             }, 10);
             
             document.body.style.overflow = 'hidden';
+        }
+
+        let visitorCountCache = null;
+        let isFetchingVisitors = false;
+
+        async function fetchVisitorCount() {
+            if (visitorCountCache !== null) return visitorCountCache;
+            if (isFetchingVisitors) return null;
+            isFetchingVisitors = true;
+            try {
+                // Registrar visita e incrementar contador real
+                const res = await fetch('https://api.visitorbadge.io/api/visitors?path=valeeochoa.github.io');
+                const svgText = await res.text();
+                const matches = svgText.match(/>([0-9,]+)</g);
+                if (matches && matches.length > 0) {
+                    const lastMatch = matches[matches.length - 1].replace(/[><]/g, '');
+                    visitorCountCache = lastMatch;
+                } else {
+                    visitorCountCache = '1';
+                }
+            } catch (e) {
+                // Fallback local si falla la red externa
+                let stored = parseInt(localStorage.getItem('portfolio_visits') || '1', 10);
+                visitorCountCache = stored.toLocaleString();
+            } finally {
+                isFetchingVisitors = false;
+            }
+            return visitorCountCache;
+        }
+
+        // Pre-cargar contador en segundo plano sin mostrar nada
+        fetchVisitorCount();
+
+        function revealVisitorCount(element) {
+            let toast = document.getElementById('visitorToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'visitorToast';
+                toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[90] bg-slate-900/90 text-white px-5 py-3 rounded-2xl shadow-xl backdrop-blur-md flex items-center gap-2.5 text-sm font-bold border border-pink-300/30 transition-all duration-300 opacity-0 translate-y-3 pointer-events-none';
+                document.body.appendChild(toast);
+            }
+
+            const count = visitorCountCache || 'Cargando...';
+            const label = currentLang === 'es' ? 'visitas en total' : 'total visits';
+            toast.innerHTML = `<span class="material-symbols-outlined text-pink-400 text-base">favorite</span> <span>${count} ${label}</span>`;
+
+            toast.classList.remove('opacity-0', 'translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            // Pequeña animación de latido en el corazón tocado
+            element.classList.add('scale-125');
+            setTimeout(() => element.classList.remove('scale-125'), 200);
+
+            // Ocultar a los 3 segundos
+            clearTimeout(window.visitorToastTimer);
+            window.visitorToastTimer = setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-3');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
         }
 
         function closeCvModal() {
