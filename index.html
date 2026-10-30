@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Portfolio</title>
+    <title>Valentina Ochoa | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -31,12 +32,12 @@
             <!-- Navigation Bar -->
             <header class="fixed top-0 left-0 right-0 z-50 w-full border-b border-pink-200/50 bg-rose-50/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-4 transition-all">
                 <div class="flex items-center justify-between max-w-[1200px] mx-auto">
-                    <div class="flex items-center gap-3">
+                    <a href="#" class="flex items-center gap-3">
                         <div class="size-8 bg-pink-300 rounded-lg flex items-center justify-center text-slate-800">
                             <span class="material-symbols-outlined">terminal</span>
                         </div>
                         <h2 class="text-xl font-bold tracking-tight">Ochoa Valentina</h2>
-                    </div>
+                    </a>
                     <nav class="hidden md:flex items-center gap-8">
                         <a data-i18n="navProjects" class="hover:text-pink-500 transition-colors text-sm font-medium" href="#proyectos">Proyectos</a>
                         <a data-i18n="navSkills" class="hover:text-pink-500 transition-colors text-sm font-medium" href="#habilidades">Habilidades</a>
@@ -46,47 +47,59 @@
                             <span>ES / EN</span>
                         </button>
                     </nav>
-                    <div class="flex md:hidden">
-                        <span class="material-symbols-outlined">menu</span>
+                    <div class="flex items-center gap-2 md:hidden">
+                        <button onclick="toggleLanguage()" class="flex items-center gap-1 px-3 py-1.5 bg-pink-300/20 border border-pink-300/50 rounded-full text-xs font-bold text-pink-600 cursor-pointer">
+                            <span class="material-symbols-outlined text-xs">language</span>
+                            <span>ES/EN</span>
+                        </button>
+                        <button onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-pink-200/40 text-slate-800 transition-colors cursor-pointer" aria-label="Menú">
+                            <span id="mobileMenuIcon" class="material-symbols-outlined">menu</span>
+                        </button>
                     </div>
+                </div>
+                <!-- Mobile Navigation Menu -->
+                <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 pt-4 pb-2 mt-4 border-t border-pink-200/50">
+                    <a onclick="toggleMobileMenu()" data-i18n="navProjects" class="hover:text-pink-500 transition-colors text-sm font-medium py-1" href="#proyectos">Proyectos</a>
+                    <a onclick="toggleMobileMenu()" data-i18n="navSkills" class="hover:text-pink-500 transition-colors text-sm font-medium py-1" href="#habilidades">Habilidades</a>
+                    <a onclick="toggleMobileMenu()" data-i18n="navAbout" class="hover:text-pink-500 transition-colors text-sm font-medium py-1" href="#sobre-mi">Sobre mí</a>
                 </div>
             </header>
             <main class="flex-1 pt-20">
                 <!-- Hero Section -->
                 <section class="px-6 md:px-20 lg:px-40 py-6">
                     <div class="max-w-[1200px] mx-auto">
-                    <div class="relative overflow-hidden rounded-3xl min-h-[500px] flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-pink-200/50 via-white/50 to-pink-300/30 border border-pink-200/50 shadow-sm shadow-pink-100">
+                        <div class="relative overflow-hidden rounded-3xl min-h-[500px] flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-pink-200/50 via-white/50 to-pink-300/30 border border-pink-200/50 shadow-sm shadow-pink-100">
                             <!-- Decorative Dachshund Background Placeholder -->
-                        <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" data-alt="Cute dachshund dog pattern or background" style="background-image: url('https://images.unsplash.com/photo-1612089209590-7d3a0429fcc0?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center;">
+                            <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" data-alt="Cute dachshund dog pattern or background" style="background-image: url('https://images.unsplash.com/photo-1612089209590-7d3a0429fcc0?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center;">
                             </div>
                             <div class="relative z-10 flex flex-col items-center gap-6 max-w-2xl">
-                            <span data-i18n="heroAvailable" class="px-4 py-1 rounded-full bg-pink-200/50 text-pink-600 text-xs font-bold uppercase tracking-widest border border-pink-300/50">Disponible para proyectos</span>
-                            
-                            <!-- Foto de Perfil -->
-                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg bg-pink-100">
-                                <img src="public/valentina.jpg" alt="Valentina Ochoa" class="w-full h-full object-cover" />
-                            </div>
+                                <span data-i18n="heroAvailable" class="px-4 py-1 rounded-full bg-pink-200/50 text-pink-600 text-xs font-bold uppercase tracking-widest border border-pink-300/50">Disponible para proyectos</span>
+                                
+                                <!-- Foto de Perfil -->
+                                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg bg-pink-100">
+                                    <img src="public/valentina.jpg" alt="Valentina Ochoa" class="w-full h-full object-cover" />
+                                </div>
 
-                            <div class="flex flex-col items-center gap-2">
-                                <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-black text-slate-800 leading-[1.1] tracking-tight">
-                                    Hola, soy Valentina
-                                </h1>
-                                <h2 data-i18n="heroSubtitle" class="text-lg md:text-xl font-bold text-pink-500 tracking-wide uppercase text-center">
-                                    Estudiante de Ingeniería en Computación
-                                </h2>
-                            </div>
-                            <p data-i18n="heroDesc" class="text-lg md:text-xl text-slate-600 font-normal leading-relaxed text-center">
-                                Creando experiencias digitales con un toque <span class="text-pink-500 font-semibold italic">único</span> y profesional. Especializada en interfaces limpias y código robusto.
+                                <div class="flex flex-col items-center gap-2">
+                                    <h1 data-i18n="heroTitle" class="text-4xl md:text-6xl font-black text-slate-800 leading-[1.1] tracking-tight">
+                                        Hola, soy Valentina
+                                    </h1>
+                                    <h2 data-i18n="heroSubtitle" class="text-lg md:text-xl font-bold text-pink-500 tracking-wide uppercase text-center">
+                                        Estudiante de Ingeniería en Computación
+                                    </h2>
+                                </div>
+                                <p data-i18n="heroDesc" class="text-lg md:text-xl text-slate-600 font-normal leading-relaxed text-center">
+                                    Creando experiencias digitales con un toque <span class="text-pink-500 font-semibold italic">único</span> y profesional. Especializada en interfaces limpias y código robusto.
                                 </p>
                                 <div class="flex flex-wrap justify-center gap-4 mt-4">
-                                <a data-i18n="heroBtnProjects" class="flex h-12 items-center px-8 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-xl font-bold transition-all shadow-sm shadow-pink-200" href="#proyectos">
+                                    <a data-i18n="heroBtnProjects" class="flex h-12 items-center px-8 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-xl font-bold transition-all shadow-sm shadow-pink-200" href="#proyectos">
                                         Ver proyectos
                                     </a>
-                                <button onclick="openCvModal('es')" data-i18n="heroBtnCvEs" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
+                                    <button onclick="openCvModal('es')" data-i18n="heroBtnCvEs" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
                                         <span class="material-symbols-outlined mr-2">visibility</span>
                                         Ver CV (ES)
                                     </button>
-                                <button onclick="openCvModal('en')" data-i18n="heroBtnCvEn" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
+                                    <button onclick="openCvModal('en')" data-i18n="heroBtnCvEn" class="flex h-12 items-center px-8 bg-white/50 hover:bg-white/80 text-slate-800 border border-pink-200 rounded-xl font-bold transition-all cursor-pointer">
                                         <span class="material-symbols-outlined mr-2">language</span>
                                         Resume (EN)
                                     </button>
@@ -95,178 +108,333 @@
                         </div>
                     </div>
                 </section>
+
                 <!-- Projects Section -->
-            <section class="px-6 md:px-20 lg:px-40 py-10 bg-rose-100/30" id="proyectos">
+                <section class="px-6 md:px-20 lg:px-40 py-10 bg-rose-100/30" id="proyectos">
                     <div class="max-w-[1200px] mx-auto">
                         <div class="flex items-end justify-between mb-12">
                             <div>
-                            <h2 data-i18n="projectsTitle" class="text-3xl font-bold text-slate-800 mb-2">Proyectos Destacados</h2>
-                            <div class="h-1.5 w-20 bg-pink-300 rounded-full"></div>
+                                <h2 data-i18n="projectsTitle" class="text-3xl font-bold text-slate-800 mb-2">Proyectos Destacados</h2>
+                                <div class="h-1.5 w-20 bg-pink-300 rounded-full"></div>
                             </div>
-                        
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <!-- Project 1: SCI -->
-                        <a href="https://sci.com.ar" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
-                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                            <a href="https://sci.com.ar" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                                <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
                                     <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Página web corporativa" src="public/Foto-SCI.png"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                                         <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex gap-2 mb-2">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">React</span>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Corporate</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">React</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Corporate</span>
                                     </div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Página web SCI</h3>
-                                <p data-i18n="project1Desc" class="text-sm text-slate-600">Desarrollo de landing page y sistema web corporativo para SCI.</p>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Página web SCI</h3>
+                                    <p data-i18n="project1Desc" class="text-sm text-slate-600">Desarrollo de landing page y sistema web corporativo para SCI.</p>
                                 </div>
-                        </a>
+                            </a>
                             <!-- Project 2: Agendatina -->
-                        <a href="https://agendatina.site" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
-                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                            <a href="https://agendatina.site" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                                <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
                                     <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Dashboard de Agendatina" src="public/agendatina.png"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                                         <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex gap-2 mb-2">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">PHP / MySQL</span>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">SaaS</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">PHP / MySQL</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">SaaS</span>
                                     </div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Agendatina</h3>
-                                <p data-i18n="project2Desc" class="text-sm text-slate-600">Plataforma completa de gestión de turnos, agenda virtual y notificaciones.</p>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Agendatina</h3>
+                                    <p data-i18n="project2Desc" class="text-sm text-slate-600">Plataforma completa de gestión de turnos, agenda virtual y notificaciones.</p>
                                 </div>
-                        </a>
+                            </a>
                             <!-- Project 3: Taj Mahal -->
-                        <a href="https://valeeochoa.github.io/Taj-Mahal/" target="_blank" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
-                            <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                            <a href="https://valeeochoa.github.io/Taj-Mahal/" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-pink-100 hover:border-pink-300 hover:shadow-md hover:shadow-pink-100/50 transition-all cursor-pointer">
+                                <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
                                     <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Taj Mahal render 3D" src="public/taj-mahal.png"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                                         <span data-i18n="projectsViewPage" class="text-white font-bold">Ver Pagina</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex gap-2 mb-2">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Three.js</span>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">WebGL</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">Three.js</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-pink-200/50 text-pink-600">WebGL</span>
                                     </div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Taj Mahal 3D</h3>
-                                <p data-i18n="project3Desc" class="text-sm text-slate-600">Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.</p>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-pink-500 transition-colors">Taj Mahal 3D</h3>
+                                    <p data-i18n="project3Desc" class="text-sm text-slate-600">Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.</p>
                                 </div>
-                        </a>
+                            </a>
                         </div>
                     </div>
                 </section>
+
                 <!-- Skills Section -->
-                <section class="px-6 md:px-20 lg:px-40 py-10" id="habilidades">
+                <section class="px-6 md:px-20 lg:px-40 py-14" id="habilidades">
                     <div class="max-w-[1200px] mx-auto">
-                        <div class="text-center mb-16">
-                        <h2 data-i18n="skillsTitle" class="text-4xl font-bold text-slate-800 mb-4">Habilidades Técnicas</h2>
-                        <p data-i18n="skillsDesc" class="text-slate-600 max-w-xl mx-auto">Herramientas y tecnologías que utilizo para dar vida a grandes ideas.</p>
+                        <div class="text-center mb-14">
+                            <h2 data-i18n="skillsTitle" class="text-4xl font-bold text-slate-800 mb-4">Habilidades Técnicas</h2>
+                            <p data-i18n="skillsDesc" class="text-slate-600 max-w-xl mx-auto">Herramientas y tecnologías que utilizo para dar vida a grandes ideas.</p>
                         </div>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                            <!-- Tech Stack -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">html</span>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                            <!-- Categorized Tech Stack from CV -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <!-- Frontend & Web -->
+                                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="size-10 rounded-xl bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                            <span class="material-symbols-outlined">code</span>
+                                        </div>
+                                        <h3 data-i18n="skillCatFrontend" class="font-bold text-slate-800">Desarrollo Web &amp; Frontend</h3>
                                     </div>
-                                    <span class="font-bold">HTML5 / CSS3</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">React</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Angular</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Next.js</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">TypeScript</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">JavaScript</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Tailwind CSS</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">HTML5 / CSS3</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Bootstrap 5</span>
+                                    </div>
                                 </div>
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">javascript</span>
+
+                                <!-- Backend & Databases -->
+                                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="size-10 rounded-xl bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                            <span class="material-symbols-outlined">database</span>
+                                        </div>
+                                        <h3 data-i18n="skillCatBackend" class="font-bold text-slate-800">Backend &amp; Bases de Datos</h3>
                                     </div>
-                                    <span class="font-bold">JavaScript</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Node.js</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">RESTful APIs</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">PostgreSQL</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">MySQL</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">SQL</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">PHP</span>
+                                    </div>
                                 </div>
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">database</span>
+
+                                <!-- Programming Languages & 3D/Apps -->
+                                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="size-10 rounded-xl bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                            <span class="material-symbols-outlined">deployed_code</span>
+                                        </div>
+                                        <h3 data-i18n="skillCatLangs" class="font-bold text-slate-800">Lenguajes, 3D &amp; Desktop</h3>
                                     </div>
-                                    <span class="font-bold">SQL / NoSQL</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Python</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">C</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Java</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Three.js</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Electron.js</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Unity</span>
+                                    </div>
                                 </div>
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">palette</span>
+
+                                <!-- Design & Tools -->
+                                <div class="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 transition-all">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="size-10 rounded-xl bg-pink-200/50 flex items-center justify-center text-pink-500">
+                                            <span class="material-symbols-outlined">palette</span>
+                                        </div>
+                                        <h3 data-i18n="skillCatTools" class="font-bold text-slate-800">Diseño &amp; Herramientas</h3>
                                     </div>
-                                    <span data-i18n="skillUiUx" class="font-bold">Diseño UI/UX</span>
-                                </div>
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">deployed_code</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Figma (UI/UX)</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Git / GitHub</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Postman</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">LaTeX</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">Matlab</span>
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 border border-pink-200 text-slate-700">AutoCAD</span>
                                     </div>
-                                    <span class="font-bold">Next.js</span>
-                                </div>
-                            <div class="flex flex-col items-center gap-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:border-pink-300 hover:shadow-sm hover:shadow-pink-100 transition-all">
-                                <div class="size-12 rounded-full bg-pink-200/50 flex items-center justify-center text-pink-500">
-                                        <span class="material-symbols-outlined text-3xl">brush</span>
-                                    </div>
-                                    <span class="font-bold">Tailwind</span>
                                 </div>
                             </div>
+
                             <!-- Progress Bars -->
-                            <div class="space-y-8">
+                            <div class="space-y-8 bg-white/60 backdrop-blur-sm p-8 rounded-3xl border border-pink-100">
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
                                         <span data-i18n="skillFrontend">Arquitectura Frontend</span>
-                                    <span class="text-pink-500">95%</span>
+                                        <span class="text-pink-500">95%</span>
                                     </div>
-                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
-                                    <div class="bg-pink-400 h-full rounded-full w-[95%]"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span data-i18n="skillBackend">Sistemas Backend</span>
-                                    <span class="text-pink-500">80%</span>
-                                    </div>
-                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
-                                    <div class="bg-pink-400 h-full rounded-full w-[80%]"></div>
+                                    <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                        <div class="bg-pink-400 h-full rounded-full w-[95%]"></div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span data-i18n="skillUiPatterns">Patrones UI Modernos</span>
-                                    <span class="text-pink-500">90%</span>
+                                        <span data-i18n="skillBackend">Sistemas Backend &amp; APIs</span>
+                                        <span class="text-pink-500">85%</span>
                                     </div>
-                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
-                                    <div class="bg-pink-400 h-full rounded-full w-[90%]"></div>
+                                    <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                        <div class="bg-pink-400 h-full rounded-full w-[85%]"></div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm font-bold">
-                                        <span data-i18n="skillMobile">Optimización Móvil</span>
-                                    <span class="text-pink-500">85%</span>
+                                        <span data-i18n="skillUiPatterns">Patrones UI Modernos &amp; Prototipado</span>
+                                        <span class="text-pink-500">90%</span>
                                     </div>
-                                <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
-                                    <div class="bg-pink-400 h-full rounded-full w-[85%]"></div>
+                                    <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                        <div class="bg-pink-400 h-full rounded-full w-[90%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm font-bold">
+                                        <span data-i18n="skillMobile">Bases de Datos Relacionales (SQL)</span>
+                                        <span class="text-pink-500">85%</span>
+                                    </div>
+                                    <div class="w-full bg-pink-200/50 rounded-full h-3 overflow-hidden border border-pink-100">
+                                        <div class="bg-pink-400 h-full rounded-full w-[85%]"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <!-- About Me & Experience Section (#sobre-mi) -->
+                <section class="px-6 md:px-20 lg:px-40 py-14 bg-rose-100/30" id="sobre-mi">
+                    <div class="max-w-[1200px] mx-auto">
+                        <div class="text-center mb-14">
+                            <h2 data-i18n="aboutTitle" class="text-4xl font-bold text-slate-800 mb-4">Sobre mí y Trayectoria</h2>
+                            <p data-i18n="aboutSubtitle" class="text-slate-600 max-w-2xl mx-auto">
+                                Estudiante avanzada de Ingeniería en Computación con experiencia internacional en Francia, docencia universitaria y desarrollo de software.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Columna 1: Experiencia Laboral y Formación Académica -->
+                            <div class="space-y-6">
+                                <!-- Experiencia Laboral -->
+                                <div class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-pink-100 shadow-sm">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="size-10 rounded-xl bg-pink-300/60 flex items-center justify-center text-slate-800">
+                                            <span class="material-symbols-outlined">work</span>
+                                        </div>
+                                        <h3 data-i18n="aboutWorkTitle" class="text-xl font-bold text-slate-800">Experiencia Laboral</h3>
+                                    </div>
+                                    <div class="relative pl-6 border-l-2 border-pink-200 space-y-6">
+                                        <div class="relative">
+                                            <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
+                                            <span data-i18n="work1Date" class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2026 – Presente</span>
+                                            <h4 data-i18n="work1Role" class="text-lg font-bold text-slate-800 mt-2">Pasante – Área de Tecnología Informática</h4>
+                                            <p class="text-sm font-medium text-slate-600">EDESAL (Empresa de Distribución de Energía de San Luis)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Formación Académica -->
+                                <div class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-pink-100 shadow-sm">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="size-10 rounded-xl bg-pink-300/60 flex items-center justify-center text-slate-800">
+                                            <span class="material-symbols-outlined">school</span>
+                                        </div>
+                                        <h3 data-i18n="aboutEduTitle" class="text-xl font-bold text-slate-800">Formación Académica</h3>
+                                    </div>
+                                    <div class="relative pl-6 border-l-2 border-pink-200 space-y-6">
+                                        <div class="relative">
+                                            <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
+                                            <span data-i18n="edu1Date" class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2020 – Presente</span>
+                                            <h4 data-i18n="edu1Degree" class="text-lg font-bold text-slate-800 mt-2">Ingeniería en Computación</h4>
+                                            <p data-i18n="edu1Place" class="text-sm font-medium text-slate-600">Universidad Nacional de San Luis (UNSL) – FCFMyN</p>
+                                            <p data-i18n="edu1Details" class="text-xs text-slate-500 mt-1">70.45% de avance · Promedio con aplazos: 6.19 / sin aplazos: 7.55</p>
+                                        </div>
+                                        <div class="relative">
+                                            <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
+                                            <span class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2024</span>
+                                            <h4 data-i18n="edu2Degree" class="text-lg font-bold text-slate-800 mt-2">Intercambio Académico – Engineer's Degree</h4>
+                                            <p class="text-sm font-medium text-slate-600">ENSEA (École Nationale Supérieure de l'Électronique et de ses Applications), Cergy, Francia</p>
+                                            <p data-i18n="edu2Details" class="text-xs text-slate-500 mt-1">Becaria del programa internacional ARFITEC</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna 2: Docencia, Becas e Idiomas -->
+                            <div class="space-y-6">
+                                <!-- Antecedentes Docentes -->
+                                <div class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-pink-100 shadow-sm">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="size-10 rounded-xl bg-pink-300/60 flex items-center justify-center text-slate-800">
+                                            <span class="material-symbols-outlined">co_present</span>
+                                        </div>
+                                        <h3 data-i18n="aboutTeachTitle" class="text-xl font-bold text-slate-800">Experiencia Docente</h3>
+                                    </div>
+                                    <div class="relative pl-6 border-l-2 border-pink-200 space-y-6">
+                                        <div class="relative">
+                                            <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
+                                            <span data-i18n="teach1Date" class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2023 – Presente</span>
+                                            <h4 data-i18n="teach1Role" class="text-lg font-bold text-slate-800 mt-2">Auxiliar de Segunda Categoría (3 cargos)</h4>
+                                            <p data-i18n="teach1Place" class="text-sm font-medium text-slate-600">Departamento de Informática – UNSL</p>
+                                            <p data-i18n="teach1Details" class="text-xs text-slate-500 mt-1">Área de Servicios (2026–Presente) y Área de Formación Inicial (2023–2026)</p>
+                                        </div>
+                                        <div class="relative">
+                                            <div class="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-pink-400 border-2 border-white"></div>
+                                            <span data-i18n="teach2Date" class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 px-2.5 py-0.5 rounded-full">2022 – Presente</span>
+                                            <h4 data-i18n="teach2Role" class="text-lg font-bold text-slate-800 mt-2">Profesora Particular de Programación</h4>
+                                            <p data-i18n="teach2Details" class="text-sm text-slate-600"> Tutorías personalizadas para nivel secundario y universitario.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Becas, Idiomas y Cursos -->
+                                <div class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-pink-100 shadow-sm">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="size-10 rounded-xl bg-pink-300/60 flex items-center justify-center text-slate-800">
+                                            <span class="material-symbols-outlined">workspace_premium</span>
+                                        </div>
+                                        <h3 data-i18n="aboutAwardsTitle" class="text-xl font-bold text-slate-800">Becas, Idiomas y Certificaciones</h3>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="p-4 rounded-2xl bg-rose-50/80 border border-pink-100">
+                                            <p data-i18n="awardsList" class="text-sm text-slate-700 leading-relaxed">
+                                                <strong class="text-slate-900">Becas y Distinciones:</strong> Beca ARFITEC de intercambio en Francia (2024) · Beca Estratégica Manuel Belgrano (2023–2024).
+                                            </p>
+                                        </div>
+                                        <div class="p-4 rounded-2xl bg-rose-50/80 border border-pink-100">
+                                            <p data-i18n="coursesList" class="text-sm text-slate-700 leading-relaxed">
+                                                <strong class="text-slate-900">Cursos destacados:</strong> Introducción a la Minería de Datos (UNSL) · R y Python aplicado a Ciencia de Datos (CACIC) · Jornadas Argentinas de Robótica (Bariloche) · Desarrollo Web FrontEnd (Ticmas, Fundación Telefónica y UNSL).
+                                            </p>
+                                        </div>
+                                        <div class="flex flex-wrap gap-3 pt-1">
+                                            <span data-i18n="langEs" class="px-4 py-1.5 rounded-full bg-pink-200/50 text-pink-700 text-xs font-bold border border-pink-300/50">Español: Nativo</span>
+                                            <span data-i18n="langEn" class="px-4 py-1.5 rounded-full bg-pink-200/50 text-pink-700 text-xs font-bold border border-pink-300/50">Inglés: Avanzado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- CTA Section -->
-            <section class="px-6 md:px-20 lg:px-40 py-10 bg-pink-100/50 border-y border-pink-200/50">
+                <section class="px-6 md:px-20 lg:px-40 py-10 bg-pink-100/50 border-y border-pink-200/50">
                     <div class="max-w-[1200px] mx-auto text-center">
                         <div class="mb-10">
-                        <span class="material-symbols-outlined text-5xl text-pink-500 mb-4">favorite</span>
-                        <h2 data-i18n="ctaTitle" class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
-                        <p data-i18n="ctaDesc" class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.</p>
+                            <span class="material-symbols-outlined text-5xl text-pink-500 mb-4">favorite</span>
+                            <h2 data-i18n="ctaTitle" class="text-4xl font-black text-slate-800 mb-4">¿Queres trabajar conmigo?</h2>
+                            <p data-i18n="ctaDesc" class="text-slate-600 text-lg max-w-2xl mx-auto">Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.</p>
                         </div>
                         <div class="flex flex-wrap justify-center gap-6">
-                        <button onclick="openCvModal('es')" data-i18n="ctaBtnCvEs" class="flex items-center gap-3 px-10 py-5 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-2xl font-bold text-lg transition-all shadow-sm shadow-pink-200">
+                            <button onclick="openCvModal('es')" data-i18n="ctaBtnCvEs" class="flex items-center gap-3 px-10 py-5 bg-pink-300 hover:bg-pink-400 text-slate-900 rounded-2xl font-bold text-lg transition-all shadow-sm shadow-pink-200 cursor-pointer">
                                 <span class="material-symbols-outlined">visibility</span>
                                 Ver CV (Español)
                             </button>
-                        <button onclick="openCvModal('en')" data-i18n="ctaBtnCvEn" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                            <button onclick="openCvModal('en')" data-i18n="ctaBtnCvEn" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all cursor-pointer">
                                 <span class="material-symbols-outlined">language</span>
                                 Resume (English)
                             </button>
-                        <a href="mailto:vochoaolguin@gmail.com" data-i18n="ctaBtnMsg" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
+                            <a href="mailto:vochoaolguin@gmail.com" data-i18n="ctaBtnMsg" class="flex items-center gap-3 px-10 py-5 bg-white hover:bg-pink-50 text-slate-800 border border-pink-200 rounded-2xl font-bold text-lg transition-all">
                                 <span class="material-symbols-outlined">mail</span>
                                 Enviar un mensaje
                             </a>
@@ -275,17 +443,18 @@
                 </section>
             </main>
             <!-- Footer -->
-        <footer class="px-6 md:px-20 lg:px-40 py-10 border-t border-pink-200/50 bg-rose-50">
+            <footer class="px-6 md:px-20 lg:px-40 py-10 border-t border-pink-200/50 bg-rose-50">
                 <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="flex items-center gap-3">
-                    <div class="size-6 bg-pink-300/50 rounded-md flex items-center justify-center text-pink-600">
+                        <div class="size-6 bg-pink-300/50 rounded-md flex items-center justify-center text-pink-600">
                             <span class="material-symbols-outlined text-xs">favorite</span>
                         </div>
-                    <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Dev Portfolio. Hecho con amor perruno.</p>
+                        <p data-i18n="footerText" class="text-sm font-medium text-slate-600">© 2026 Valentina Ochoa Olguin. Hecho con amor perruno.</p>
                     </div>
-                    <div class="flex items-center gap-6">
-                    <a class="text-slate-500 hover:text-pink-500 transition-colors" href="#">LinkedIn</a>
-                    <a class="text-slate-500 hover:text-pink-500 transition-colors" href="#">GitHub</a>
+                    <div class="flex items-center gap-6 text-sm font-medium">
+                        <a class="text-slate-500 hover:text-pink-500 transition-colors" href="https://www.linkedin.com/search/results/all/?keywords=Valentina%20Ochoa%20Olguin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a class="text-slate-500 hover:text-pink-500 transition-colors" href="https://github.com/valeeochoa" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="text-slate-500 hover:text-pink-500 transition-colors" href="mailto:vochoaolguin@gmail.com">Email</a>
                     </div>
                 </div>
             </footer>
@@ -363,6 +532,20 @@
             });
         });
 
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.textContent = 'close';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.textContent = 'menu';
+            }
+        }
+
         const translations = {
             es: {
                 navProjects: "Proyectos",
@@ -382,17 +565,45 @@
                 project3Desc: "Experiencia interactiva renderizada en el navegador explorando el Taj Mahal.",
                 skillsTitle: "Habilidades Técnicas",
                 skillsDesc: "Herramientas y tecnologías que utilizo para dar vida a grandes ideas.",
-                skillUiUx: "Diseño UI/UX",
+                skillCatFrontend: "Desarrollo Web & Frontend",
+                skillCatBackend: "Backend & Bases de Datos",
+                skillCatLangs: "Lenguajes, 3D & Desktop",
+                skillCatTools: "Diseño & Herramientas",
                 skillFrontend: "Arquitectura Frontend",
-                skillBackend: "Sistemas Backend",
-                skillUiPatterns: "Patrones UI Modernos",
-                skillMobile: "Optimización Móvil",
+                skillBackend: "Sistemas Backend & APIs",
+                skillUiPatterns: "Patrones UI Modernos & Prototipado",
+                skillMobile: "Bases de Datos Relacionales (SQL)",
+                aboutTitle: "Sobre mí y Trayectoria",
+                aboutSubtitle: "Estudiante avanzada de Ingeniería en Computación con experiencia internacional en Francia, docencia universitaria y desarrollo de software.",
+                aboutWorkTitle: "Experiencia Laboral",
+                work1Date: "2026 – Presente",
+                work1Role: "Pasante – Área de Tecnología Informática",
+                aboutEduTitle: "Formación Académica",
+                edu1Date: "2020 – Presente",
+                edu1Degree: "Ingeniería en Computación",
+                edu1Place: "Universidad Nacional de San Luis (UNSL) – FCFMyN",
+                edu1Details: "70.45% de avance · Promedio con aplazos: 6.19 / sin aplazos: 7.55",
+                edu2Degree: "Intercambio Académico – Engineer's Degree",
+                edu2Details: "Becaria del programa internacional ARFITEC",
+                aboutTeachTitle: "Experiencia Docente",
+                teach1Date: "2023 – Presente",
+                teach1Role: "Auxiliar de Segunda Categoría (3 cargos)",
+                teach1Place: "Departamento de Informática – UNSL",
+                teach1Details: "Área de Servicios (2026–Presente) y Área de Formación Inicial (2023–2026)",
+                teach2Date: "2022 – Presente",
+                teach2Role: "Profesora Particular de Programación",
+                teach2Details: "Tutorías personalizadas para nivel secundario y universitario.",
+                aboutAwardsTitle: "Becas, Idiomas y Certificaciones",
+                awardsList: "<strong class='text-slate-900'>Becas y Distinciones:</strong> Beca ARFITEC de intercambio en Francia (2024) · Beca Estratégica Manuel Belgrano (2023–2024).",
+                coursesList: "<strong class='text-slate-900'>Cursos destacados:</strong> Introducción a la Minería de Datos (UNSL) · R y Python aplicado a Ciencia de Datos (CACIC) · Jornadas Argentinas de Robótica (Bariloche) · Desarrollo Web FrontEnd (Ticmas, Fundación Telefónica y UNSL).",
+                langEs: "Español: Nativo",
+                langEn: "Inglés: Avanzado",
                 ctaTitle: "¿Queres trabajar conmigo?",
                 ctaDesc: "Estoy lista para ayudarte a construir algo increíble. Descarga mi currículum detallado o envíame un mensaje.",
                 ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> Ver CV (Español)`,
                 ctaBtnCvEn: `<span class="material-symbols-outlined">language</span> Resume (English)`,
                 ctaBtnMsg: `<span class="material-symbols-outlined">mail</span> Enviar un mensaje`,
-                footerText: "© 2026 Dev Portfolio. Hecho con amor perruno."
+                footerText: "© 2026 Valentina Ochoa Olguin. Hecho con amor perruno."
             },
             en: {
                 navProjects: "Projects",
@@ -412,17 +623,45 @@
                 project3Desc: "Interactive experience rendered in the browser exploring the Taj Mahal.",
                 skillsTitle: "Technical Skills",
                 skillsDesc: "Tools and technologies I use to bring great ideas to life.",
-                skillUiUx: "UI/UX Design",
+                skillCatFrontend: "Web & Frontend Development",
+                skillCatBackend: "Backend & Databases",
+                skillCatLangs: "Languages, 3D & Desktop",
+                skillCatTools: "Design & Tools",
                 skillFrontend: "Frontend Architecture",
-                skillBackend: "Backend Systems",
-                skillUiPatterns: "Modern UI Patterns",
-                skillMobile: "Mobile Optimization",
+                skillBackend: "Backend Systems & APIs",
+                skillUiPatterns: "Modern UI Patterns & Prototyping",
+                skillMobile: "Relational Databases (SQL)",
+                aboutTitle: "About Me & Experience",
+                aboutSubtitle: "Senior Computer Engineering student with international academic experience in France, university teaching roles, and software development background.",
+                aboutWorkTitle: "Work Experience",
+                work1Date: "2026 – Present",
+                work1Role: "IT Intern – Information Technology Department",
+                aboutEduTitle: "Education",
+                edu1Date: "2020 – Present",
+                edu1Degree: "Computer Engineering",
+                edu1Place: "National University of San Luis (UNSL) – FCFMyN",
+                edu1Details: "70.45% completed · GPA: 7.55 (Overall: 6.19)",
+                edu2Degree: "Academic Exchange – Engineer's Degree",
+                edu2Details: "ARFITEC International Scholarship recipient",
+                aboutTeachTitle: "Teaching Experience",
+                teach1Date: "2023 – Present",
+                teach1Role: "Undergraduate Teaching Assistant (2nd Category)",
+                teach1Place: "Department of Informatics – UNSL",
+                teach1Details: "Service Area (2026–Present) & Initial Training Area (2023–2026)",
+                teach2Date: "2022 – Present",
+                teach2Role: "Private Programming Tutor",
+                teach2Details: "Programming tutoring sessions for high school and university students.",
+                aboutAwardsTitle: "Scholarships, Languages & Courses",
+                awardsList: "<strong class='text-slate-900'>Scholarships & Awards:</strong> ARFITEC Exchange Scholarship in France (2024) · Manuel Belgrano Strategic Scholarship (2023–2024).",
+                coursesList: "<strong class='text-slate-900'>Featured Courses:</strong> Introduction to Data Mining (UNSL) · R and Python for Data Science (CACIC) · Argentine Robotics Conference (Bariloche) · Frontend Web Development (Ticmas, Telefónica Foundation & UNSL).",
+                langEs: "Spanish: Native",
+                langEn: "English: Advanced",
                 ctaTitle: "Do you want to work with me?",
                 ctaDesc: "I'm ready to help you build something amazing. Download my detailed resume or send me a message.",
                 ctaBtnCvEs: `<span class="material-symbols-outlined">visibility</span> View CV (Spanish)`,
                 ctaBtnCvEn: `<span class="material-symbols-outlined">language</span> Resume (English)`,
                 ctaBtnMsg: `<span class="material-symbols-outlined">mail</span> Send a message`,
-                footerText: "© 2026 Dev Portfolio. Made with puppy love."
+                footerText: "© 2026 Valentina Ochoa Olguin. Made with puppy love."
             }
         };
 
@@ -458,8 +697,8 @@
             };
 
             if (lang === 'en') {
-                iframe.src = 'public/CV.pdf';
-                downloadBtn.href = 'public/CV.pdf';
+                iframe.src = 'public/Resume.pdf';
+                downloadBtn.href = 'public/Resume.pdf';
                 downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span> Download';
                 title.textContent = 'My Resume';
                 loaderText.textContent = 'Loading...';
