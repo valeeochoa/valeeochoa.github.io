@@ -440,12 +440,12 @@
 
                         <!-- Contact Form Card -->
                         <div class="bg-white/90 backdrop-blur-sm p-6 md:p-10 rounded-3xl border border-pink-200 shadow-lg shadow-pink-100/60">
-                            <form id="contactForm" action="https://formsubmit.co/vochoaolguin@gmail.com" method="POST" onsubmit="handleFormSubmit()" class="space-y-5">
-                                <!-- Configuración FormSubmit -->
-                                <input type="hidden" name="_captcha" value="false">
-                                <input type="hidden" name="_template" value="table">
-                                <input type="hidden" name="_next" value="https://valeeochoa.github.io?sent=true#contacto">
-                                <input type="hidden" id="formEmailSubject" name="_subject" value="Nuevo contacto desde tu Portfolio">
+                            <form id="contactForm" onsubmit="handleWeb3FormSubmit(event)" class="space-y-5">
+                                <input type="hidden" name="access_key" value="d020215e-85f4-4bec-85b4-e4e45b345371">
+                                <input type="hidden" id="formSubjectInput" name="subject" value="Nuevo contacto desde tu Portfolio">
+                                <input type="hidden" name="from_name" value="Portfolio Valentina">
+                                <!-- Honeypot anti-spam -->
+                                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
@@ -453,7 +453,7 @@
                                         <input
                                             type="text"
                                             id="contactName"
-                                            name="Nombre"
+                                            name="name"
                                             required
                                             data-i18n-placeholder="formNamePlaceholder"
                                             placeholder="Ej. Juan Pérez"
@@ -465,7 +465,7 @@
                                         <input
                                             type="email"
                                             id="contactEmail"
-                                            name="Email"
+                                            name="email"
                                             required
                                             data-i18n-placeholder="formEmailPlaceholder"
                                             placeholder="ejemplo@correo.com"
@@ -478,7 +478,7 @@
                                     <input
                                         type="text"
                                         id="contactSubject"
-                                        name="Motivo"
+                                        name="motivo"
                                         data-i18n-placeholder="formSubjectPlaceholder"
                                         placeholder="Propuesta laboral, proyecto freelance, consulta..."
                                         class="w-full rounded-xl border-pink-200 bg-rose-50/40 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-pink-400 focus:ring-pink-300 transition-all"
@@ -488,7 +488,7 @@
                                     <label for="contactMessage" data-i18n="formMessageLabel" class="block text-sm font-bold text-slate-700 mb-2">Mensaje *</label>
                                     <textarea
                                         id="contactMessage"
-                                        name="Mensaje"
+                                        name="message"
                                         rows="4"
                                         required
                                         data-i18n-placeholder="formMessagePlaceholder"
@@ -525,7 +525,7 @@
                     <div class="flex items-center gap-6 text-sm font-medium">
                         <a class="text-slate-500 hover:text-pink-500 transition-colors" href="https://www.linkedin.com/search/results/all/?keywords=Valentina%20Ochoa%20Olguin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a class="text-slate-500 hover:text-pink-500 transition-colors" href="https://github.com/valeeochoa" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a class="text-slate-500 hover:text-pink-500 transition-colors" href="mailto:vochoaolguin@gmail.com">Email</a>
+                        <a class="text-slate-500 hover:text-pink-500 transition-colors" href="mailto:valochoaolguin@gmail.com">Email</a>
                     </div>
                 </div>
             </footer>
@@ -695,7 +695,7 @@
                 formSubmitBtn: `<span class="material-symbols-outlined">send</span> Enviar mensaje`,
                 formSendingBtn: `<span class="material-symbols-outlined animate-spin">progress_activity</span> Enviando...`,
                 formSuccessMsg: "¡Gracias por escribirme! Tu mensaje fue enviado correctamente y me pondré en contacto con vos a la brevedad.",
-                formErrorMsg: "Hubo un problema al enviar el formulario. Por favor intentá nuevamente o escribime a vochoaolguin@gmail.com.",
+                formErrorMsg: "Hubo un problema al enviar el formulario. Por favor intentá nuevamente o escribime a valochoaolguin@gmail.com.",
                 footerText: "© 2026 Valentina Ochoa Olguin. Hecho con amor &lt;3"
             },
             en: {
@@ -765,7 +765,7 @@
                 formSubmitBtn: `<span class="material-symbols-outlined">send</span> Send message`,
                 formSendingBtn: `<span class="material-symbols-outlined animate-spin">progress_activity</span> Sending...`,
                 formSuccessMsg: "Thank you for reaching out! Your message has been sent and I will get back to you soon.",
-                formErrorMsg: "There was an issue sending the form. Please try again or email me directly at vochoaolguin@gmail.com.",
+                formErrorMsg: "There was an issue sending the form. Please try again or email me directly at valochoaolguin@gmail.com.",
                 footerText: "© 2026 Valentina Ochoa Olguin. Made with puppy love."
             }
         };
@@ -788,18 +788,50 @@
             });
         }
 
-        function handleFormSubmit() {
+        async function handleWeb3FormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('contactSubmitBtn');
+            const feedback = document.getElementById('formFeedback');
             const name = document.getElementById('contactName').value.trim();
             const customSubject = document.getElementById('contactSubject').value.trim();
-            const subjectInput = document.getElementById('formEmailSubject');
+            const subjectInput = document.getElementById('formSubjectInput');
+
             if (subjectInput) {
                 subjectInput.value = customSubject
                     ? `${name} se desea contactar con vos (${customSubject})`
                     : `${name} se desea contactar con vos desde tu Portfolio`;
             }
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = translations[currentLang].formSendingBtn;
+            feedback.classList.add('hidden');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    feedback.textContent = translations[currentLang].formSuccessMsg;
+                    feedback.className = 'rounded-xl p-4 text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+                    feedback.classList.remove('hidden');
+                    form.reset();
+                } else {
+                    throw new Error(data.message || 'Error Web3Forms');
+                }
+            } catch (error) {
+                feedback.textContent = translations[currentLang].formErrorMsg;
+                feedback.className = 'rounded-xl p-4 text-sm font-semibold bg-red-50 text-red-700 border border-red-200';
+                feedback.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = translations[currentLang].formSubmitBtn;
+            }
         }
 
         function openCvModal(lang) {
